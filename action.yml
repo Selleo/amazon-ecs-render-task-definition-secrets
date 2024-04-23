@@ -1,0 +1,20 @@
+---
+name: Fetch parameter store secrets ARNs
+description: Fetch parameter store secrets ARNs for task definition json
+inputs:
+  task_definition:
+    description: 'The path to the ECS task definition JSON file'
+    required: true
+  envs:
+    description: 'The list of variables with which the application will launch.'
+    required: true
+  paths:
+    description: 'Paths for parameter store variables'
+    required: false
+  
+outputs:
+  task-definition:
+    description: 'Output with rendered task definition file'
+runs:
+  using: node20
+  main: dist/index.js
