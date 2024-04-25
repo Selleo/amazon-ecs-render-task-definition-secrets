@@ -6,12 +6,14 @@ inputs:
     description: 'The path to the ECS task definition JSON file'
     required: true
   envs:
-    description: 'The list of variables with which the application will launch.'
+    description: 'The list of variables the application will launch with'
     required: true
   paths:
     description: 'Paths for parameter store variables'
-    required: false
-  
+    required: true
+  region:
+    description: 'AWS region for parameter store'
+    required: true
 outputs:
   task-definition:
     description: 'Output with rendered task definition file'

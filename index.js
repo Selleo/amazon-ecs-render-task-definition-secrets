@@ -5,15 +5,19 @@ const { SSMClient, GetParametersByPathCommand } = require("@aws-sdk/client-ssm")
 
 async function run() {
     try {
+        const region = core.getInput('region', { required: true });
         const envs = core.getInput('envs', { required: true });
         const paths = core.getInput('paths', { required: true });
         const taskDefinitionFile = core.getInput('task-definition', { required: true });
-        const envsParts = envs.split("\n");
+        const envsParts = envs.split(/\s+/);
+        console.log(envsParts)
         for (let i=0; i<envsParts.length; i++){
             envsParts[i].trim();
         }
-        const pathParts = paths.split("\n");
-        const client = new SSMClient({});
+        const pathParts = paths.split(/\s+/);
+        const client = new SSMClient({
+            region: region,
+        });
         let params=[];
         for (let j=0; j<pathParts.length; j++){
             const path = pathParts[j].trim();
