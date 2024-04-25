@@ -1,6 +1,9 @@
 ---
-name: Fetch parameter store secrets ARNs
-description: Fetch parameter store secrets ARNs for task definition json
+name: Amazon ECS "PRE-Render Task Definition Secrets" Action for GitHub Actions
+description: Renders Parameter Store Secrets into ECS Task Definition.
+branding:
+  icon: cloud
+  color: orange
 inputs:
   task_definition:
     description: 'The path to the ECS task definition JSON file'

@@ -59410,7 +59410,6 @@ async function run() {
         const paths = core.getInput('paths', { required: true });
         const taskDefinitionFile = core.getInput('task-definition', { required: true });
         const envsParts = envs.split(/\s+/);
-        console.log(envsParts)
         for (let i=0; i<envsParts.length; i++){
             envsParts[i].trim();
         }
