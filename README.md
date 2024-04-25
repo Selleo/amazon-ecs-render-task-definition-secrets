@@ -17,7 +17,7 @@ Single source of parameters:
         with:
           region: eu-central-1
           task-definition: task-definition.json
-          envs: -|
+          envs: |
             AWS_ACCESS_KEY_ID 
             AWS_REGION
           paths: /ecs/app/production/
@@ -41,10 +41,10 @@ Example usage with multiple paths:
         with:
           region: eu-central-1
           task-definition: task-definition.json
-          envs: -|
+          envs: |
             AWS_ACCESS_KEY_ID 
             AWS_REGION
-          paths: -|
+          paths: |
             /ecs/app/production/
             /ecs/app-config/production/
 ```
