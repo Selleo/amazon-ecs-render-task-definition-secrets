@@ -13,7 +13,7 @@ Single source of parameters:
 ```yaml
       - name: Render secrets from parameter store
         id: render-secrets
-        uses: Selleo/amazon-ecs-render-task-definition-secrets@v1.0.0
+        uses: Selleo/amazon-ecs-render-task-definition-secrets@v1.2.0
         with:
           region: eu-central-1
           task-definition: task-definition.json
@@ -37,7 +37,7 @@ Example usage with multiple paths:
 ```yaml
       - name: Render secrets from parameter store
         id: render-secrets
-        uses: Selleo/amazon-ecs-render-task-definition-secrets@v1.0.0
+        uses: Selleo/amazon-ecs-render-task-definition-secrets@v1.2.0
         with:
           region: eu-central-1
           task-definition: task-definition.json
