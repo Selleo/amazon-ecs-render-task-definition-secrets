@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "ncc build index.js --out dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,5 +24,8 @@
     "@aws-sdk/client-ssm": "^3.556.0",
     "fs": "^0.0.1-security",
     "tmp": "^0.2.3"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.3"
   }
 }

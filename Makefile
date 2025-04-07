@@ -1,3 +1,3 @@
 .PHONY: build
 build:
-	ncc build index.js
+	npm run build
