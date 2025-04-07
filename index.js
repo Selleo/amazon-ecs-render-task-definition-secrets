@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const exec = require("@actions/exec");
+const tmp = require('tmp');
 const fs = require('fs');
 const { SSMClient, GetParametersByPathCommand } = require("@aws-sdk/client-ssm");
 
@@ -55,12 +56,19 @@ async function run() {
                     break;
             }
         }
+        var updatedTaskDefFile = tmp.fileSync({
+            tmpdir: process.env.RUNNER_TEMP,
+            prefix: 'task-definition-',
+            postfix: '.json',
+            keep: true,
+            discardDescriptor: true
+        });
         const taskFile = fs.readFileSync(taskDefinitionFile, 'utf8');
         const parsedFile = JSON.parse(taskFile);
         parsedFile.containerDefinitions[0].secrets=params;
         const renderedTask = JSON.stringify(parsedFile, null, 2);
-        fs.writeFileSync("output.json", renderedTask);
-        core.setOutput("task-definition", "output.json");
+        fs.writeFileSync(updatedTaskDefFile.name, renderedTask);
+        core.setOutput("task-definition", updatedTaskDefFile.name);
     } catch (error) {
         core.setFailed(error.message);
     }
